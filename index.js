@@ -15,22 +15,17 @@ const commands = {
       return handleMedia("MANGA", contents, channel);
     }
   },
-  m: {
-    apply(contents, channel) {
-      return commands.manga.apply(contents, channel);
-    }
-  },
   anime: {
     apply(contents, channel) {
       return handleMedia("ANIME", contents, channel);
     }
   },
-  a: {
-    apply(contents, channel) {
-      return commands.anime.apply(contents, channel);
-    }
-  },
 };
+
+Object.entries(commands).forEach(value => {
+  const shortHand = commands[value[0].charAt(0) + ""] = {};
+  shortHand.apply = (contents, channel) => value[1].apply(contents, channel);
+});
 
 if (!config.maxLength)
   config.maxLength = 300;
