@@ -1,0 +1,13 @@
+query ($id: Int, $search: String, $type: MediaType!) {
+    Media(id: $id, search: $search, type: $type) {
+        url: siteUrl
+        title {
+            romaji
+        }
+        description
+        image: coverImage {
+            extraLarge
+            color
+        }
+    }
+}

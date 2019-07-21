@@ -1,0 +1,15 @@
+{
+  "name": "anilinker",
+  "version": "1.0.0",
+  "description": "Inline message Anime and Manga lookups via the AniList API",
+  "author": "Nicholas Ignoffo <nick@tehnut.info> (https://tehnut.info)",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "main": "index.js",
+  "devDependencies": {
+    "discord.js": "^11.5.1",
+    "node-fetch": "^2.6.0"
+  }
+}
