@@ -20,11 +20,14 @@ Create a new `config.json` file in the root directory of the project (the same d
 
 ```json
 {
-  "token": "$TOKEN"
+  "token": "",
+  "maxLength": 300
 }
 ```
 
-`$TOKEN` should be the bot token obtained from [Discord's developer panel](https://discordapp.com/developers/).
+`token` should be the bot token obtained from [Discord's developer panel](https://discordapp.com/developers/).
+
+`maxLength` is the max number of characters that can be displayed in the embed. Anything after will be trimmed.
 
 Finally, run `npm start` to start the bot.
 

@@ -32,6 +32,9 @@ const commands = {
   },
 };
 
+if (!config.maxLength)
+  config.maxLength = 300;
+
 const pattern = createPattern();
 console.log("Matching pattern: " + pattern);
 
@@ -67,10 +70,10 @@ function sanitizeDescription(raw) {
   raw = raw.replace(/<br>/g, "");
   if (raw.includes("~!"))
     raw = raw.substring(0, raw.indexOf("~!"));
-  if (raw.length > 300)
-    raw = raw.substring(0, 300) + "...";
+  if (raw.length > config.maxLength)
+    raw = raw.substring(0, config.maxLength) + "...";
   
-  return raw;
+  return raw.trim();
 }
 
 function handleMedia(type, contents, channel) {
