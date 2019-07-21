@@ -64,7 +64,7 @@ function createPattern() {
 }
 
 function sanitizeDescription(raw) {
-  raw = raw.replace(/<br>/g, "\n");
+  raw = raw.replace(/<br>/g, "");
   if (raw.includes("~!"))
     raw = raw.substring(0, raw.indexOf("~!"));
   if (raw.length > 300)
