@@ -5,11 +5,15 @@
   "author": "Nicholas Ignoffo <nick@tehnut.info> (https://tehnut.info)",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js"
+    "start": "node -r esm src/index.js"
   },
-  "main": "index.js",
+  "main": "src/index.js",
   "devDependencies": {
     "discord.js": "^11.5.1",
     "node-fetch": "^2.6.0"
+  },
+  "dependencies": {
+    "striptags": "^3.1.1",
+    "esm": "^3.2.25"
   }
 }

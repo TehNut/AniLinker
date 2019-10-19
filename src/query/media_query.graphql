@@ -4,7 +4,7 @@ query ($id: Int, $search: String, $type: MediaType!) {
         title {
             romaji
         }
-        description
+        description(asHtml: true)
         image: coverImage {
             extraLarge
             color
