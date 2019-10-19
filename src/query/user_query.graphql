@@ -1,0 +1,22 @@
+query($id: Int, $name: String) {
+    User(id: $id, name: $name) {
+        name
+        avatar {
+            large
+        }
+        about(asHtml: true)
+        options {
+            profileColor
+        }
+        url: siteUrl
+        statistics {
+            anime {
+                episodesWatched
+                minutesWatched
+            }
+            manga {
+                chaptersRead
+            }
+        }
+    }
+}
