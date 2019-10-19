@@ -9,6 +9,7 @@ query ($id: Int, $search: String, $type: MediaType!) {
             extraLarge
             color
         }
+        format
         episodes
         chapters
         airingSchedule(page: 0, perPage: 1, notYetAired: true) {

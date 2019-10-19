@@ -1,3 +1,5 @@
+import {displayify} from "../../../Github/TehNut/AniSchedule/src/util";
+
 const fs = require("fs");
 require.extensions[".graphql"] = (module, filename) => {
   module.exports = fs.readFileSync(filename, "utf8");
@@ -47,19 +49,21 @@ export function handleMedia(type, contents, channel) {
   function getFooterText(media) {
     switch (type) {
       case "MANGA": {
-        if (media.chapters)
-          return `${media.chapters} Chapter(s)`;
+        let ret = displayify(media.format);
 
-        return "";
+        if (media.format !== "ONE_SHOT" && media.chapters)
+          ret = createOrAppend(ret, "•", `${media.chapters} Chapter(s)`);
+
+        return ret;
       }
       case "ANIME": {
-        let ret = "";
-        if (media.episodes)
-          ret += `${media.episodes} Episode(s)`;
+        let ret = displayify(media.format);
+        if (media.format !== "MOVIE" && media.episodes)
+          ret = createOrAppend(ret, "•", `${media.episodes} Episode(s)`);
 
         if (media.airingSchedule && media.airingSchedule.nodes.length > 0) {
           const next = media.airingSchedule.nodes[0];
-          ret += `${ret.length > 0 ? " | " : ""} ${formatTime(next.timeUntilAiring)} until episode ${next.episode}`;
+          ret = createOrAppend(ret, "•", `${formatTime(next.timeUntilAiring)} until episode ${next.episode}`);
         }
         return ret;
       }
@@ -100,6 +104,10 @@ export function formatTime(secs, appendSeconds) {
     ret += (ret.length === 0 ? "" : " ") + time.seconds + "s";
 
   return ret;
+}
+
+function createOrAppend(input, splitter, append) {
+  return input.length > 0 ? `${input} • ${append}` : append;
 }
 
 const url = "https://graphql.anilist.co/";
