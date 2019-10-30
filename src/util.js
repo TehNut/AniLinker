@@ -1,5 +1,3 @@
-import {displayify} from "../../../Github/TehNut/AniSchedule/src/util";
-
 const fs = require("fs");
 require.extensions[".graphql"] = (module, filename) => {
   module.exports = fs.readFileSync(filename, "utf8");
@@ -70,6 +68,14 @@ export function handleMedia(type, contents, channel) {
       default: return "";
     }
   }
+}
+
+function displayify(enumVal) {
+  const words = enumVal.split("_");
+  for (let i = 0; i < words.length; i++)
+    words[i] = words[i].substr(0, 1) + words[i].toLowerCase().substr(1);
+
+  return words.join(" ");
 }
 
 export function parseTime(secs) {
