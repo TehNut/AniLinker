@@ -10,7 +10,7 @@
   "main": "src/index.js",
   "devDependencies": {
     "discord.js": "^11.5.1",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.1"
   },
   "dependencies": {
     "striptags": "^3.1.1",
